@@ -17,7 +17,7 @@ public class Shop {
         productIds = new ArrayList<String>();
     }
 
-    public double getPrice(int productidx, int days) {
+        public double getPrice(int productidx, int days) {
         double price = 0;
         if(productTypes.get(productidx).equals("M")){
             price = 5;
