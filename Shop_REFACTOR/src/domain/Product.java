@@ -2,10 +2,12 @@ package domain;
 
 public abstract class Product {
     private String id,title;
+    private boolean isBeschikbaar;
 
     public Product(String id, String title){
         setId(id);
         setTitle(title);
+        isBeschikbaar = true;
     }
 
     //getters
