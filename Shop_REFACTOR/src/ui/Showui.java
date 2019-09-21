@@ -1,16 +1,23 @@
 package ui;
 
+import db.shopWriter;
 import domain.*;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Showui {
     Shop shop;
     public Showui(){
         shop = new Shop();
+        shopWriter writer = new shopWriter();
 
+        //load file in db
+        ArrayList<Product> products = (ArrayList<Product>) writer.readfile();
+        if (products != null)
+            shop.setDbProduct(products);
 
-        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Alle producten \n\n0. Quit";
+        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Alle producten \n5. Verander beschikbaarheid\n\n0. Quit";
         int choice = -1;
         while (choice != 0) {
             String choiceString = JOptionPane.showInputDialog(menu);
@@ -23,8 +30,13 @@ public class Showui {
                 showPrice();
             } else if (choice == 4){
                 showProducts();
+            } else if(choice == 5){
+                veranderBeschikbaarheid();
             }
         }
+        writer.setProduct(shop.getProducts());
+        writer.writeFile();
+
     }
     public void showMenu(){
         String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Alle producten \n\n0. Quit";
@@ -97,6 +109,21 @@ public class Showui {
             int days = Integer.parseInt(daysString);
             System.out.println(shop.getProduct(id));
             JOptionPane.showMessageDialog(null, shop.getProduct(id).getPrice(days));
+        }
+    }
+    public void veranderBeschikbaarheid(){
+        String id = JOptionPane.showInputDialog("Enter the id:");
+        int idx = -1;
+        boolean found = false;
+        if(shop.getProduct(id).getId().equals(id))
+        {
+            found = true;
+        }
+
+        if(found)
+        {
+            shop.getProduct(id).changeBeschikbaar();
+            JOptionPane.showMessageDialog(null, shop.getProduct(id).getTitle() + " beschikbaarheid: " + shop.getProduct(id).isBeschikbaar());
         }
     }
 }

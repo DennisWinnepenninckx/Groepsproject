@@ -4,6 +4,9 @@ public class CD extends Product {
     public CD(String id, String title){
         super(id, title);
     }
+    public CD(String id, String title,boolean b){
+        super(id, title,b);
+    }
 
     @Override
     public double getPrice(int dagen) {
@@ -12,6 +15,6 @@ public class CD extends Product {
 
     @Override
     public String toString() {
-        return "CD: " + this.getTitle() + " " + "id: " + this.getId();
+        return "CD," + super.toString();
     }
 }

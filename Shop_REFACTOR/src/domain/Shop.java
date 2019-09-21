@@ -9,6 +9,9 @@ public class Shop {
         dbProduct = new ArrayList<>();
     }
 
+    public void setDbProduct(List<Product> products){
+        dbProduct = (ArrayList<Product>) products;
+    }
     public void addProduct(Product p){
         if(p == null){
             throw new IllegalArgumentException("Product is null");

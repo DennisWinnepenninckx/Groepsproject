@@ -9,6 +9,11 @@ public abstract class Product {
         setTitle(title);
         isBeschikbaar = true;
     }
+    public Product(String id, String title, boolean isBeschikbaar){
+        this.isBeschikbaar = isBeschikbaar;
+        setId(id);
+        setTitle(title);
+    }
 
     //getters
     public String getId(){
@@ -24,6 +29,9 @@ public abstract class Product {
         }else{
             return this.title;
         }
+    }
+    public boolean isBeschikbaar(){
+        return isBeschikbaar;
     }
     //setters
     // ID en title mochten "" zijn in programma
@@ -41,8 +49,16 @@ public abstract class Product {
             this.title = title;
         }
     }
+    public void setisBeschikbaar(boolean beschikbaar){
+        this.isBeschikbaar = beschikbaar;
+    }
+    public void changeBeschikbaar(){
+        if (isBeschikbaar){isBeschikbaar = false;}else{isBeschikbaar = true;}
+    }
+
     public abstract double getPrice(int dagen);
 
-    @Override
-    public abstract String toString();
+    public String toString(){
+        return "title:" + this.getTitle() + "," + "id:" + this.getId() + ",beschikbaarheid:" + this.isBeschikbaar;
+    }
 }
