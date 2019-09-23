@@ -1,2 +1,2 @@
-CD,title:Jessica,id:1,beschikbaarheid:false
+CD,title:Jessica,id:1,beschikbaarheid:true
 Game,title:Dennis,id:2,beschikbaarheid:true

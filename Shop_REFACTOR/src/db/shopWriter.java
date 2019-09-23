@@ -58,12 +58,12 @@ public class shopWriter {
             boolean isbeschikbaar = Boolean.parseBoolean(beschikbaarheid);
 
             if(type.equals("Movie")){
-                product = new Movie(title,id,isbeschikbaar);
+                product = new Movie(id,title,isbeschikbaar);
             }else if(type.equals("CD")){
-                product = new CD(title,id,isbeschikbaar);
+                product = new CD(id,title,isbeschikbaar);
 
             }else{
-                product = new Game(title,id,isbeschikbaar);
+                product = new Game(id,title,isbeschikbaar);
             }
             result.add(product);
 

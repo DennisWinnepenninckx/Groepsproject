@@ -49,6 +49,9 @@ public class Showui {
         String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/C for CD):");
         Product p;
         String id;
+        for(Product s:shop.getProducts()){
+            System.out.println(s);
+        }
         if (shop.getProducts().size() == 0)
             id = Integer.toString(1);
         else
