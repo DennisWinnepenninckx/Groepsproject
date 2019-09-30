@@ -1,9 +1,6 @@
 package ui;
 
-import domain.Game;
-import domain.Movie;
-import domain.Product;
-import domain.Shop;
+import domain.*;
 
 import javax.swing.*;
 
@@ -13,7 +10,7 @@ public class Showui {
         shop = new Shop();
 
 
-        String menu = "1. Add product\n2. Show product\n3. Show rental price\n\n0. Quit";
+        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Alle producten \n\n0. Quit";
         int choice = -1;
         while (choice != 0) {
             String choiceString = JOptionPane.showInputDialog(menu);
@@ -24,23 +21,36 @@ public class Showui {
                 showProduct();
             } else if (choice == 3){
                 showPrice();
+            } else if (choice == 4){
+                showProducts();
             }
         }
     }
     public void showMenu(){
-        String menu = "1. Add product\n2. Show product\n3. Show rental price\n\n0. Quit";
+        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Alle producten \n\n0. Quit";
         String choiceString = JOptionPane.showInputDialog(menu);
     }
 
     public void addProduct(){
         String title = JOptionPane.showInputDialog("Enter the title:");
-        String id = JOptionPane.showInputDialog("Enter the id:");
-        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
+        //String id = JOptionPane.showInputDialog("Enter the id:");
+        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/C for CD):");
         Product p;
+        String id;
+        if (shop.getProducts().size() == 0)
+            id = Integer.toString(1);
+        else
+            id = Integer.toString(Integer.parseInt(shop.getProducts().get(shop.getProducts().size()-1).getId()) + 1);
+
+        if (shop.getProducts().size() != 0)
+            System.out.println(shop.getProducts().get(shop.getProducts().size()-1));
+
         if(type.equals("M")){
-            p = new Movie(title,id);
+            p = new Movie(id,title);
+        }else if(type.equals("G")){
+            p = new Game(id,title);
         }else{
-            p = new Game(title,id);
+            p = new CD(id,title);
         }
         shop.addProduct(p);
     }
@@ -61,8 +71,17 @@ public class Showui {
     public void showProducts(){
         String antwoord ="";
         for(Product p: shop.getProducts()){
-            antwoord+=p+"\n";
+            if (p instanceof Movie)
+                antwoord+=p+"\n";
         }
+        for(Product p: shop.getProducts()){
+            if (p instanceof Game)
+                antwoord+=p+"\n";
+        }for(Product p: shop.getProducts()){
+            if (p instanceof CD)
+                antwoord+=p+"\n";
+        }
+
         JOptionPane.showMessageDialog(null, antwoord);
 
     }
