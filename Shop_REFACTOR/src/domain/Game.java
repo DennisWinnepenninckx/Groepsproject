@@ -4,7 +4,9 @@ public class Game extends Product {
     public Game(String id, String title) {
         super(id, title);
     }
-
+    public Game(String id, String title,boolean b){
+        super(id, title,b);
+    }
     @Override
     public double getPrice(int dagen) {
         return dagen * 3;
@@ -12,6 +14,6 @@ public class Game extends Product {
 
     @Override
     public String toString() {
-        return "Game: " + this.getTitle() + " " + "id: " + this.getId();
+        return "Game," + super.toString();
     }
 }
