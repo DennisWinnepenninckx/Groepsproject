@@ -1,5 +1,7 @@
 package ui;
 
+
+import static javax.swing.text.html.HTML.Tag.HEAD;
 <<<<<<< HEAD
 =======
 import db.shopWriter;
@@ -8,6 +10,7 @@ import domain.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
+
 
 public class Showui {
     Shop shop;

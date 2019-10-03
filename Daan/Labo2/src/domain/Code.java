@@ -5,7 +5,11 @@ public class Code {
 
 
     public Code(CodeBehavior cb){
-        this.cb = cb;
+        setCb(cb);
+    }
+
+    public Code(){
+
     }
 
     public String encode(String msg){
@@ -14,5 +18,9 @@ public class Code {
 
     public String decode(String msg){
         return cb.decode(msg);
+    }
+
+    public void setCb(CodeBehavior cb){
+        this.cb = cb;
     }
 }
