@@ -6,9 +6,8 @@ public class CaesarCode implements CodeBehavior {
     private int rotateNum;
     private final String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-    public CaesarCode(){
-        Random r = new Random();
-        rotateNum = r.nextInt(25) + 1;
+    public CaesarCode(int rotateNum){
+        setRotateNum(rotateNum);
     }
 
     @Override
@@ -52,5 +51,9 @@ public class CaesarCode implements CodeBehavior {
             }
         }
         return decoded;
+    }
+
+    public void setRotateNum(int num){
+        rotateNum = num;
     }
 }
