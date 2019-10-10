@@ -2,13 +2,13 @@ package domain;
 
 import java.util.Random;
 
-public class Caesarcode implements CodeBehaviour {
+public class Caesarcode implements CodeStrategy {
 
     private int aantal_plaatsen;
     private final String alphabet = "abcdefghijklmnopqrstuvwxyz";
-    public Caesarcode(){
+    public Caesarcode(int aantal_plaatsen){
         Random n = new Random();
-        aantal_plaatsen = n.nextInt(11);
+        this.aantal_plaatsen = aantal_plaatsen;
     }
 
     @Override

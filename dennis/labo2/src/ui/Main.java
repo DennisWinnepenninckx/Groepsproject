@@ -1,5 +1,8 @@
 package ui;
 
+import domain.DennisCode;
+import launcer.CodeLauncher;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,7 +14,10 @@ public class Main {
         //Code c2 = new Code(new Spiegeling());
         //System.out.println(c2.encode("dit is zeer geheim!"));
         //System.out.println(c2.decode(c2.encode("dit is zeer geheim!")));
-        CodeLauncher c = new CodeLauncher();
+        DennisCode c = new DennisCode();
+        System.out.println(c.encode("daanbanaan"));
+        System.out.println(c.decode(c.encode("daanbanaan")));
+        //CodeLauncher c = new CodeLauncher();
 
     }
 }

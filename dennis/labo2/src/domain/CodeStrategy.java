@@ -1,6 +1,6 @@
 package domain;
 
-public interface CodeBehaviour {
+public interface CodeStrategy {
     public String encode(String m);
     public String decode(String m);
 }
