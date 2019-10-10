@@ -21,7 +21,7 @@ public class Product {
         this.price = aanschafprijs;
         this.name = name;
     }
-    void setState(ProductState state) {
+    public void setState(ProductState state) {
         this.state = state;
     }
 
@@ -65,8 +65,12 @@ public class Product {
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return this.name + " " + this.price;
+        return "Product - name: " + this.name + "\n-price: €" + this.price + "\n-state: "+ this.getState().toString();
     }
 }

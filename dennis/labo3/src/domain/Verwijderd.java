@@ -10,30 +10,34 @@ public class Verwijderd implements ProductState {
 
     @Override
     public void uitlenen() {
-        System.out.println("Het product is verwijderd");
+        throw new DBException("Het product is verwijderd");
     }
 
     @Override
     public void verwijderen() {
-        System.out.println("Het product is verwijderd");
+        throw new DBException("Het product is al verwijderd");
 
     }
 
     @Override
     public void terugbrengen() {
-        System.out.println("Het product is verwijderd");
+        throw new DBException("Het product is verwijderd");
 
     }
 
     @Override
     public void terugbrengenBeschadigd() {
-        System.out.println("Het product is verwijderd");
+        throw new DBException("Het product is verwijderd");
 
     }
 
     @Override
     public void herstellen() {
-        System.out.println("Het product is verwijderd");
+        throw new DBException("Het product is verwijderd");
 
+    }
+    @Override
+    public String toString() {
+        return " verwijderd";
     }
 }
