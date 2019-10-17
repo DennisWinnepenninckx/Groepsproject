@@ -109,7 +109,7 @@ public class ProductUI {
             Product p = products.get(index);
             try {
                 p.uitlenen();
-                JOptionPane.showMessageDialog(null,name + " wordt nu uitgeleend");
+                JOptionPane.showMessageDialog(null,name + " wordt nu uitgeleend voor €"+p.getPrice()/5);
             } catch (DBException e) {
                 JOptionPane.showMessageDialog(null,e.getMessage());
             }
