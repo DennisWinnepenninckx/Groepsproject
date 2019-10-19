@@ -1,9 +1,9 @@
 package domain;
 
-public class Code {
-    private CodeBehaviour cb;
-    public Code( CodeBehaviour codeBehaviour){
-        this.cb = codeBehaviour;
+public class codeContext {
+    private CodeStrategy cb;
+    public codeContext(CodeStrategy codeStrategy){
+        this.cb = codeStrategy;
     }
 
     public String encode(String message){

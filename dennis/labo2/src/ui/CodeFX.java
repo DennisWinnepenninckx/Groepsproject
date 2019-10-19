@@ -1,73 +1,75 @@
 package ui;
 
 import domain.Caesarcode;
-import domain.Code;
-import domain.CodeBehaviour;
+import domain.DennisCode;
+import domain.codeContext;
 import domain.Spiegeling;
-import javafx.application.Application;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+import javax.swing.*;
+import java.util.Random;
+
 public class CodeFX {
-    private Button start;
+
     private Label firstText;
-    private Label secondText;
-    private Label offset;
-    private Label result;
-    private TextField input;
-    private TextField inputOffset;
-    private Button setInput;
-    private Button caeserStrategy;
-    private Button caeserStrategyEncode;
-    private Button caeserStrategyDecode;
-    private Button Spiegeling;
-    private Button SpiegelingEncode;
-    private Button SpiegelingDecode;
+    private TextField input,result;
+
+    private Button encode, decode;
 
     public CodeFX(GridPane root) {
-        start = new Button("Begin met encoderen");
-        firstText = new Label("Vul uw tekst in.");
+        decode = new Button("decode");
+        encode = new Button("encode");
         input = new TextField();
-        inputOffset = new TextField();
-        setInput = new Button("Confirm text");
-        secondText = new Label("Welke methode wil u gebruiken?");
-        offset = new Label("Wat is de offset?");
-        caeserStrategy = new Button("Caesar");
-        Spiegeling = new Button("Spiegeling");
-        SpiegelingEncode = new Button("Encodeer");
-        caeserStrategyEncode = new Button("Encodeer");
-        SpiegelingDecode = new Button("Decodeer");
-        caeserStrategyDecode = new Button("Decodeer");
-        result = new Label();
+        firstText = new Label("Vul hieronder uw tekst in:");
+        result = new TextField("restult");
+        input.setPromptText("input");
+        result.setEditable(false);
+        final ComboBox classes = new ComboBox();
+        classes.getItems().addAll(
+                "Ceasarcode",
+                "Spiegeling",
+                "DennisCode"
+        );
+        classes.setValue("Ceasarcode");
+        root.add(firstText,0,0);
+        root.add(classes,1,0);
+        root.add(input, 0,1);
+        root.add(encode,0,2);
+        root.add(decode,2,2);
 
 
-
-        root.add(start,0,0);
-        start.setOnAction( event ->{
-            start.setVisible(false);
-            root.add(firstText,0,0);
-            root.add(input,0,1);
-            root.add(setInput,0,2);
+        root.add(result,1,2);
+        encode.setOnAction( event ->{
+            String inputText = input.getText();
+            codeContext c;
+            if(classes.getValue().equals("Ceasarcode")) {
+                c = new codeContext(new Caesarcode(Integer.parseInt(JOptionPane.showInputDialog("Hoeveel plaatsen?"))));
+            }else if( classes.getValue().equals("DennisCode") ){
+                c = new codeContext(new DennisCode());
+            }else{
+                c = new codeContext(new Spiegeling());
+            }
+            result.setText(c.encode(inputText));
         });
 
-        setInput.setOnAction(event -> {
-            firstText.setVisible(false);
-            input.setVisible(false);
-            setInput.setVisible(false);
-            root.add(secondText,0,0);
-            root.add(caeserStrategy,0,1);
-            root.add(Spiegeling,1,1);
+        decode.setOnAction( event ->{
+            String inputText = input.getText();
+            codeContext c;
+            if(classes.getValue().equals("Ceasarcode")) {
+                c = new codeContext(new Caesarcode(Integer.parseInt(JOptionPane.showInputDialog("Hoeveel plaatsen?"))));
+            }else if( classes.getValue().equals("DennisCode") ){
+                c = new codeContext(new DennisCode());
+            }else{
+                c = new codeContext(new Spiegeling());
+            }
+            result.setText(c.decode(inputText));
+
         });
 
-        Spiegeling.setOnAction(event -> {
-            secondText.setVisible(false);
-            caeserStrategy.setVisible(false);
-            Spiegeling.setVisible(false);
-            root.add(SpiegelingEncode,0,1);
-            root.add(SpiegelingDecode,1,1);
-        });
 
 
     }

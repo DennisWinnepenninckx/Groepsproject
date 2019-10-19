@@ -1,6 +1,6 @@
 package domain;
 
-public class Spiegeling implements CodeBehaviour {
+public class Spiegeling implements CodeStrategy {
 
     public Spiegeling(){
 
