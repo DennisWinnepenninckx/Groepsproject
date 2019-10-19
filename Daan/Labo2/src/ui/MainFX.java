@@ -50,8 +50,11 @@ public class MainFX {
         switch(chosenCode){
             case "Caesercode":
                 Dialog dialog = new TextInputDialog();
-                dialog.show();
-                int move = Integer.parseInt(dialog.getContentText());
+                dialog.setTitle("Caeser Shift Value");
+                dialog.setHeaderText(null);
+                dialog.showAndWait();
+                TextField help = ((TextInputDialog) dialog).getEditor();
+                int move = Integer.parseInt(help.getText());
                 code.setCb(new CaesarCode(move));
                 result = code.decode(textTF.getText());
                 break;
@@ -70,8 +73,11 @@ public class MainFX {
         switch(chosenCode){
             case "Caesercode":
                 Dialog dialog = new TextInputDialog();
-                dialog.show();
-                int move = Integer.parseInt(dialog.getContentText());
+                dialog.setTitle("Caeser Shift Value");
+                dialog.setHeaderText(null);
+                dialog.showAndWait();
+                TextField help = ((TextInputDialog) dialog).getEditor();
+                int move = Integer.parseInt(help.getText());
                 code.setCb(new CaesarCode(move));
                 result = code.encode(textTF.getText());
                 break;
