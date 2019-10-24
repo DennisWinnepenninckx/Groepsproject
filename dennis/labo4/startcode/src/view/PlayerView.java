@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Game;
+import model.Observer;
 
-public class PlayerView  {
+public class PlayerView implements Observer {
 	private Stage stage = new Stage();
 	private Scene playerScene;
 	private Label diceLabel; 
@@ -16,9 +18,12 @@ public class PlayerView  {
 	private Label messageLabel; 
 	
 	private int spelerNummer;
+	Game game;
 	
-	public PlayerView(int spelerNummer){
-		this.spelerNummer = spelerNummer;
+	public PlayerView(int i, Game game){
+        this.game = game;
+        game.addObserver(this);
+		this.spelerNummer = i;
 		diceLabel = new Label("beurt 1: ");
 		playButton = new Button("Werp dobbelstenen");
 		playButton.setOnAction(new ThrowDicesHandler());
@@ -44,11 +49,21 @@ public class PlayerView  {
 	public void isAanBeurt(boolean aanBeurt){
 		playButton.setDisable(!aanBeurt);		
 	}
-	
-	class ThrowDicesHandler implements EventHandler<ActionEvent> {
+
+    @Override
+    public void update(int[] e, int nummer, Observer o, int total) {
+	    //if (this = observer){isaanbeurt(true);}
+        messageLabel.setText("player: " + nummer + ": " + e[0] + " - " +e[1] + ":" + total);
+        if (this == o){isAanBeurt(true);}else{isAanBeurt(false);}
+
+    }
+
+
+    class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            
+            //todo game.werpdobbelsteen (play)
+			game.play();
         }
     }
 }
