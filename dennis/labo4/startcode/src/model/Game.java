@@ -77,7 +77,7 @@ public class Game implements Subject {
 
 
         }else{
-               
+
             }
         /*
         * for (Player player:players){
