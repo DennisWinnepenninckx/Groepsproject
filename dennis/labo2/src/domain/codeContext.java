@@ -13,4 +13,9 @@ public class codeContext {
     public String decode(String message){
         return cb.decode(message);
     }
+
+    @Override
+    public String toString() {
+        return cb.toString();
+    }
 }

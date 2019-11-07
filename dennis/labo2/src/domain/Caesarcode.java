@@ -51,5 +51,8 @@ public class Caesarcode implements CodeStrategy {
         return encoded;
     }
 
-
+    @Override
+    public String toString() {
+        return "caesar";
+    }
 }

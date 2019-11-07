@@ -1,9 +1,6 @@
 package ui;
 
-import domain.Caesarcode;
-import domain.DennisCode;
-import domain.codeContext;
-import domain.Spiegeling;
+import domain.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -47,11 +44,11 @@ public class CodeFX {
             String inputText = input.getText();
             codeContext c;
             if(classes.getValue().equals("Ceasarcode")) {
-                c = new codeContext(new Caesarcode(Integer.parseInt(JOptionPane.showInputDialog("Hoeveel plaatsen?"))));
+                c = CodeFactory.makeCode(Integer.parseInt(JOptionPane.showInputDialog("Hoeveel plaatsen?")));
             }else if( classes.getValue().equals("DennisCode") ){
-                c = new codeContext(new DennisCode());
+                c = CodeFactory.makeCode("dennis");
             }else{
-                c = new codeContext(new Spiegeling());
+                c = CodeFactory.makeCode("spiegeling");
             }
             result.setText(c.encode(inputText));
         });
@@ -60,12 +57,14 @@ public class CodeFX {
             String inputText = input.getText();
             codeContext c;
             if(classes.getValue().equals("Ceasarcode")) {
-                c = new codeContext(new Caesarcode(Integer.parseInt(JOptionPane.showInputDialog("Hoeveel plaatsen?"))));
+                System.out.println("ok");
+                c = CodeFactory.makeCode(Integer.parseInt(JOptionPane.showInputDialog("Hoeveel plaatsen?")));
             }else if( classes.getValue().equals("DennisCode") ){
-                c = new codeContext(new DennisCode());
+                c = CodeFactory.makeCode("dennis");
             }else{
-                c = new codeContext(new Spiegeling());
+                c = CodeFactory.makeCode("spiegeling");
             }
+            System.out.println(c);
             result.setText(c.decode(inputText));
 
         });
