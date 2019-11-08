@@ -20,8 +20,8 @@ public class Main extends Application {
         game.addPlayer(player2);
         game.addPlayer(player3);
 
-		PlayerView pv3 = new PlayerView(3,game);
-		PlayerView pv2 = new PlayerView(2,game);
+		PlayerView pv3 = new PlayerView(2,game);
+		PlayerView pv2 = new PlayerView(3,game);
 		PlayerView pv1 = new PlayerView(1,game);
 		pv1.isAanBeurt(true);
 	}
